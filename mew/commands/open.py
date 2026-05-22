@@ -1,7 +1,9 @@
 from rich import print
+from rich.console import Console
 
 import json
 import os
+import time
 
 from mew.core.activator import (
     open_activated_shell
@@ -11,6 +13,8 @@ from mew.core.resolver import Resolver
 from mew.registry import Registry
 from mew.ui.select import select_environment
 
+
+console = Console()
 
 ACTIVE_ENV_FILE = os.path.expanduser(
     "~/.mew/active_env.txt"
@@ -25,7 +29,13 @@ def run(name_or_id: str | None = None):
     environments = registry.get_all()
 
     if not environments:
-        print("[yellow]No environments found[/yellow]")
+
+        print(
+            "[bold #ff8800]"
+            "No environments found"
+            "[/bold #ff8800]"
+        )
+
         return
 
     # ------------------------
@@ -44,13 +54,21 @@ def run(name_or_id: str | None = None):
         matched = resolver.resolve(name_or_id)
 
         if not matched:
-            print("[red]Environment not found[/red]")
+
+            print(
+                "[bold red]"
+                "Environment not found"
+                "[/bold red]"
+            )
+
             return
 
         if len(matched) == 1:
+
             env = matched[0]
 
         else:
+
             env = select_environment(
                 "Multiple environments found",
                 matched
@@ -76,9 +94,25 @@ def run(name_or_id: str | None = None):
             f
         )
 
+    # ------------------------
+    # Opening Animation
+    # ------------------------
+
+    with console.status(
+        "[bold #bb86fc]"
+        "Preparing environment..."
+        "[/bold #bb86fc]",
+        spinner="dots",
+        spinner_style="bold #ff8800"
+    ):
+
+        time.sleep(1)
+
     print(
-        f"\n[green]Opening "
-        f"{env.name} [{env.id}]...[/green]\n"
+        f"\n[bold #00ff99]"
+        f"Opening {env.name} "
+        f"[{env.id}]..."
+        f"[/bold #00ff99]\n"
     )
 
     open_activated_shell(env)
