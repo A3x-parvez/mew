@@ -6,9 +6,12 @@ class Detector:
 
     @staticmethod
     def detect_python_versions():
+
         versions = []
+        seen = set()
 
         possible = [
+            "py",
             "python",
             "python3",
             "python3.10",
@@ -17,20 +20,39 @@ class Detector:
         ]
 
         for cmd in possible:
-            if shutil.which(cmd):
-                try:
+
+            if not shutil.which(cmd):
+                continue
+
+            try:
+
+                if cmd == "py":
+
                     output = subprocess.check_output(
                         [cmd, "--version"],
-                        text=True
+                        text=True,
+                        stderr=subprocess.DEVNULL
                     ).strip()
+
+                else:
+
+                    output = subprocess.check_output(
+                        [cmd, "--version"],
+                        text=True,
+                        stderr=subprocess.DEVNULL
+                    ).strip()
+
+                if output not in seen:
 
                     versions.append({
                         "command": cmd,
                         "version": output
                     })
 
-                except Exception:
-                    pass
+                    seen.add(output)
+
+            except Exception:
+                pass
 
         return versions
 
