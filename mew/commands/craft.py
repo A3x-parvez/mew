@@ -1,10 +1,13 @@
 from rich import print
+from rich.console import Console
 
 from mew.core.detector import Detector
 from mew.core.manager import Manager
 from mew.ui.prompt import text_input
 from mew.ui.select import select_choice
 
+
+console = Console()
 
 manager = Manager()
 
@@ -30,11 +33,51 @@ def run():
 
     name = text_input("Environment name")
 
-    if env_type == "Python venv":
-        env = manager.create_venv(name, version_choice)
+    # ------------------------
+    # Craft Animation
+    # ------------------------
 
-    else:
-        python_version = version_choice.replace("python", "")
-        env = manager.create_conda(name, python_version)
+    with console.status(
+        "[bold magenta]Crafting environment...[/bold magenta]",
+        spinner="arc",
+        spinner_style="bold #ff8800"
+    ):
 
-    print(f"\n[green]✓ Crafted {env.name} [{env.id}][/green]")
+        if env_type == "Python venv":
+
+            env = manager.create_venv(
+                name,
+                version_choice
+            )
+
+        else:
+
+            python_version = (
+                version_choice
+                .replace("python", "")
+            )
+
+            env = manager.create_conda(
+                name,
+                python_version
+            )
+
+    # ------------------------
+    # Success Message
+    # ------------------------
+
+    print(
+        f"\n[bold #00ff99]"
+        f"Environment crafted successfully"
+        f"[/bold #00ff99]"
+    )
+
+    print(
+        f"[bold #bb86fc]Name:[/bold #bb86fc] "
+        f"[bold white]{env.name}[/bold white]"
+    )
+
+    print(
+        f"[bold #ff8800]ID:[/bold #ff8800] "
+        f"[bold white]{env.id}[/bold white]\n"
+    )
