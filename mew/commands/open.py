@@ -1,5 +1,8 @@
 from rich import print
 
+import json
+import os
+
 from mew.core.activator import (
     open_activated_shell
 )
@@ -8,6 +11,10 @@ from mew.core.resolver import Resolver
 from mew.registry import Registry
 from mew.ui.select import select_environment
 
+
+ACTIVE_ENV_FILE = os.path.expanduser(
+    "~/.mew/active_env.txt"
+)
 
 resolver = Resolver()
 registry = Registry()
@@ -48,6 +55,26 @@ def run(name_or_id: str | None = None):
                 "Multiple environments found",
                 matched
             )
+
+    # ------------------------
+    # SAVE ACTIVE ENV
+    # ------------------------
+
+    os.makedirs(
+        os.path.dirname(ACTIVE_ENV_FILE),
+        exist_ok=True
+    )
+
+    with open(ACTIVE_ENV_FILE, "w") as f:
+
+        json.dump(
+            {
+                "id": env.id,
+                "name": env.name,
+                "backend": env.backend
+            },
+            f
+        )
 
     print(
         f"\n[green]Opening "
