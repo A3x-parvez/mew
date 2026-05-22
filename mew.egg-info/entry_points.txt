@@ -1,0 +1,2 @@
+[console_scripts]
+mew = mew.cli:app

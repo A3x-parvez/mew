@@ -1,0 +1,21 @@
+[project]
+name = "mew"
+version = "0.1.0"
+description = "Modern Python and Conda environment manager"
+authors = [
+    {name = "Parvez"}
+]
+requires-python = ">=3.10"
+dependencies = [
+    "typer",
+    "rich",
+    "InquirerPy",
+    "pydantic"
+]
+
+[project.scripts]
+mew = "mew.cli:app"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
