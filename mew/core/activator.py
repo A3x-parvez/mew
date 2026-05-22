@@ -2,10 +2,41 @@ import os
 import subprocess
 import shellingham
 
+from rich import print
+
 
 def open_activated_shell(env):
 
     shell, _ = shellingham.detect_shell()
+
+    # ------------------------
+    # CLEAN NAME
+    # ------------------------
+
+    env.name = env.name.strip()
+
+    # ------------------------
+    # INVALID SPACE CHECK
+    # ------------------------
+
+    if env.backend == "conda":
+
+        if " " in env.name:
+
+            print(
+                "\n[bold red]"
+                "Conda environment names "
+                "cannot contain spaces"
+                "[/bold red]"
+            )
+
+            print(
+                "[bold #ff8800]"
+                "Use hyphen (-) or underscore (_)"
+                "[/bold #ff8800]\n"
+            )
+
+            return
 
     # ------------------------
     # VENV
@@ -64,9 +95,10 @@ def open_activated_shell(env):
 
     elif env.backend == "conda":
 
-        conda_env = (
-            f"{env.name}-{env.id}"
-        )
+        conda_env = env.path.replace(
+            "conda:",
+            ""
+        ).strip()
 
         # WINDOWS
         if os.name == "nt":
