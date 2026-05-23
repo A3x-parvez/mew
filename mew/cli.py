@@ -10,7 +10,8 @@ from mew.commands import (
     sync,
     clone,
     lock,
-    unlock
+    unlock,
+    help
 )
 
 # Future shell integration
@@ -24,7 +25,8 @@ from mew.commands import (
 # )
 
 app = typer.Typer(
-    help="🐾 mew — Python environment manager"
+    help="🐾 mew — Python environment manager",
+    invoke_without_command=True
 )
 
 # Future shell commands
@@ -37,6 +39,13 @@ app = typer.Typer(
 #     name="shell"
 # )
 
+
+@app.callback(invoke_without_command=True)
+def default(ctx: typer.Context):
+
+    if ctx.invoked_subcommand is None:
+        help.run()
+        
 
 # ------------------------
 # ENV COMMANDS
@@ -107,6 +116,9 @@ def unlock_env(
 ):
     unlock.run(name_or_id)
 
+@app.command(name="help")
+def help_command():
+    help.run()
 
 # ------------------------
 # FUTURE SHELL COMMANDS
