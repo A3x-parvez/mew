@@ -8,7 +8,9 @@ from mew.commands import (
     about,
     close,
     sync,
-    clone
+    clone,
+    lock,
+    unlock
 )
 
 # Future shell integration
@@ -80,11 +82,31 @@ def close_env():
 def sync_envs():
     sync.run()
 
+
 @app.command(name="clone")
 def clone_env(
     name_or_id: str = typer.Argument(None)
 ):
     clone.run(name_or_id)
+
+
+# ------------------------
+# LOCK COMMANDS
+# ------------------------
+
+@app.command(name="lock")
+def lock_env(
+    name_or_id: str = typer.Argument(None)
+):
+    lock.run(name_or_id)
+
+
+@app.command(name="unlock")
+def unlock_env(
+    name_or_id: str = typer.Argument(None)
+):
+    unlock.run(name_or_id)
+
 
 # ------------------------
 # FUTURE SHELL COMMANDS

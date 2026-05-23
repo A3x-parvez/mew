@@ -10,3 +10,4 @@ class Environment(BaseModel):
     path: str
     created_at: str
     last_used: Optional[str] = None
+    locked: bool = False

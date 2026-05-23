@@ -17,7 +17,13 @@ def run(name_or_id: str | None = None):
     environments = registry.get_all()
 
     if not environments:
-        console.print("[yellow]No environments found[/yellow]")
+
+        console.print(
+            "[bold #ff8800]"
+            "No environments found"
+            "[/bold #ff8800]"
+        )
+
         return
 
     if not name_or_id:
@@ -32,31 +38,60 @@ def run(name_or_id: str | None = None):
         matched = resolver.resolve(name_or_id)
 
         if not matched:
-            console.print("[red]Environment not found[/red]")
+
+            console.print(
+                "[bold red]"
+                "Environment not found"
+                "[/bold red]"
+            )
+
             return
 
         if len(matched) == 1:
+
             env = matched[0]
 
         else:
+
             env = select_environment(
                 "Multiple environments found",
                 matched
             )
 
+    # ------------------------
+    # STATUS ICONS
+    # ------------------------
+
+    backend_icon = (
+        "🐍"
+        if env.backend == "venv"
+        else "🧪"
+    )
+
+    lock_status = (
+        "[bold red]Locked 🔒[/bold red]"
+        if getattr(env, "locked", False)
+        else "[bold green]Unlocked 🔓[/bold green]"
+    )
+
+    # ------------------------
+    # CONTENT
+    # ------------------------
+
     content = f"""
-[bold cyan]Name:[/bold cyan] {env.name}
-[bold cyan]ID:[/bold cyan] {env.id}
-[bold cyan]Backend:[/bold cyan] {env.backend}
-[bold cyan]Python:[/bold cyan] {env.python_version}
-[bold cyan]Path:[/bold cyan] {env.path}
-[bold cyan]Created:[/bold cyan] {env.created_at}
+[bold #bb86fc]Name:[/bold #bb86fc] {env.name}
+[bold #ff8800]ID:[/bold #ff8800] {env.id}
+[bold cyan]Backend:[/bold cyan] {backend_icon} {env.backend}
+[bold green]Python:[/bold green] {env.python_version}
+[bold magenta]Path:[/bold magenta] {env.path}
+[bold yellow]Created:[/bold yellow] {env.created_at}
+[bold cyan]Protection:[/bold cyan] {lock_status}
 """
 
     console.print(
         Panel.fit(
             content,
             title=f"🐾 {env.name}",
-            border_style="cyan"
+            border_style="bright_magenta"
         )
     )

@@ -46,8 +46,14 @@ def show_envs(environments):
             else "🧪"
         )
 
+        lock_icon = (
+            "🔒"
+            if getattr(env, "locked", False)
+            else "🔓"
+        )
+
         table.add_row(
-            env.name,
+            f"{lock_icon} {env.name}",
             env.id,
             f"{backend_icon} {env.backend}",
             env.python_version
