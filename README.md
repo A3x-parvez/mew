@@ -1,4 +1,4 @@
-
+<div align="center">
 <p align="center">
 	<img src="asset/mew_logo.png" alt="mew" width="160" />
 </p>
@@ -11,6 +11,7 @@
 # mew — Lightweight Python environment manager
 
 mew is a terminal-first environment manager for Python and Conda that makes creating, switching, and managing environments simple, fast, and predictable.
+</div>
 
 Table of Contents
 -----------------
