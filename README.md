@@ -1,16 +1,41 @@
-
+<div align="center">
 <p align="center">
 	<img src="asset/mew_logo.png" alt="mew" width="160" />
 </p>
 
+# **MEW** — Lightweight Python environment manager
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8%2B-blue.svg)](https://www.python.org/)
-[![Build](https://img.shields.io/badge/build-unknown-lightgrey.svg)](#)
-[![PyPI](https://img.shields.io/badge/pypi-—-lightgrey.svg)](#)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-purple)](#)
+[![Conda](https://img.shields.io/badge/Conda-Supported-44A833?logo=anaconda&logoColor=white)](#)
+[![venv](https://img.shields.io/badge/venv-Supported-green)](#)
+[![CLI](https://img.shields.io/badge/interface-Terminal-orange)](#)
+[![Status](https://img.shields.io/badge/status-Active%20Development-brightgreen)](#)
+[![Made with Python](https://img.shields.io/badge/Made%20With-Python-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 
-# mew — Lightweight Python environment manager
+---
 
-mew is a terminal-first environment manager for Python and Conda that makes creating, switching, and managing environments simple, fast, and predictable.
+### **Craft • Activate • Clone • Lock • Repeat**
+
+</div>
+
+
+<p align="center">
+	<img src="asset/mew_banner.png" alt="MEW" />
+</p>
+
+---
+
+`mew` is a modern, terminal-first environment manager for Python and Conda designed to make environment workflows simple, fast, and predictable.
+
+Built for developers who prefer working in the terminal, mew provides a clean interactive experience for creating, activating, cloning, protecting, and managing environments without the complexity of traditional tools. It combines a lightweight workflow with powerful features such as environment locking, cloning, syncing, unique environment IDs, and interactive environment selection.
+
+mew supports both Python virtual environments (`venv`) and Conda environments through a unified interface, allowing you to manage multiple environment backends with the same commands and workflow. Whether you're working on personal projects, open-source contributions, research, or production applications, mew helps keep your development environments organized and easy to manage.
+
+</div>
+
+---
 
 Table of Contents
 -----------------
@@ -25,7 +50,33 @@ Table of Contents
 
 ## About
 
-mew provides a small, focused CLI for environment workflows. It tracks environments in a registry, provides human-friendly names plus unique IDs, and supports both `venv` and `conda` backends.
+**mew** is a modern, terminal-first environment manager for Python and Conda that makes environment creation, activation, cloning, and management simple, fast, and predictable.
+
+It provides a lightweight but powerful CLI for everyday environment workflows. Environments are tracked in a registry using human-friendly names and unique IDs, making them easy to find, manage, and activate.
+
+mew supports both **Python virtual environments (`venv`)** and **Conda environments** through a unified interface, allowing developers to work with multiple environment backends without changing their workflow.
+
+### Features
+
+- 🐍 Python `venv` support
+- 🧪 Conda environment support
+- ⚡ Fast environment creation and activation
+- 🎨 Interactive terminal UI
+- 🆔 Human-friendly names with unique IDs
+- 🔒 Environment locking and protection
+- 🧬 Environment cloning
+- 🔄 Environment synchronization
+- 🎯 Open environments by name or ID
+- 💻 PowerShell, CMD, and Bash support
+- 🌎 Cross-platform workflow
+
+### Philosophy
+
+mew focuses on developer experience by making common environment tasks easy and consistent:
+
+**Craft • Activate • Clone • Lock • Manage**
+
+All from one beautiful terminal interface.
 
 
 ## Showcase
@@ -300,9 +351,54 @@ Contributions are welcome — please open issues or PRs. For code changes:
 
 ---
 
-## License
+## **Author**
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+<div align="center">
+
+### Built with ❤️ by Rijwanool Karim
+
+Founder of **Wtero** • AI Engineer • Full-Stack Developer • Open Source Enthusiast
+
+<p>
+  <a href="https://github.com/A3x-parvez">
+    <img src="https://img.shields.io/badge/GitHub-A3x--parvez-black?style=for-the-badge&logo=github" />
+  </a>
+  
+  <a href="https://www.linkedin.com/in/rijwanool-karim">
+    <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" />
+  </a>
+
+  <a href="https://rijwanool-karim.vercel.app/" target="_blank">
+	<img src="https://img.shields.io/badge/Portfolio-Visit%20Website-8B5CF6?style=for-the-badge&logo=vercel&logoColor=white" />
+	</a>
+  
+  <a href="https://wtero.com">
+    <img src="https://img.shields.io/badge/Wtero-Official%20Website-8B5CF6?style=for-the-badge" />
+  </a>
+</p>
+
+
+</div>
+
+---
+
+### Support the Project
+
+If you find RagFlow useful:
+
+- ⭐ Star the repository
+- 🐛 Report bugs and suggest features
+- 🔀 Submit pull requests
+- 📢 Share the project with others
+
+Your support helps improve the project and future open-source AI tools.
+
+
+## **License**
+
+Distributed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+---
 
 
 
