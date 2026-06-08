@@ -91,7 +91,7 @@ All from one beautiful terminal interface.
 Clone and install locally:
 
 ```bash
-git clone https://github.com/your-username/mew.git
+git clone https://github.com/A3x-parvez/mew.git
 cd mew
 pip install -e .
 ```
