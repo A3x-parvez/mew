@@ -1,6 +1,6 @@
 <div align="center">
 <p align="center">
-	<img src="asset/mew_logo.png" alt="mew" width="160" />
+	<img src="asset/mew_logo.png" alt="mew" width="170" />
 </p>
 
 # **MEW** — Lightweight Python environment manager
